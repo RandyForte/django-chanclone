@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BasePage</title>
+  </head>
+  <body>
+    <nav>
+      {%if board%}
+        {%for b in board%}
+        <ul>
+          <a href="{{b.board_name}}"></a>
+        </ul>
+        {%endfor%}
+      {%endif%}
+    </nav>
+    {% block body_block %}
+    {# Anything outside of this will be inherited if you use extend.#}
+    {% endblock %}
+  </body>
+</html>

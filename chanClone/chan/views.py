@@ -1,14 +1,17 @@
 from django.shortcuts import render
-from chan.forms import newPost
-from chan.models import Post
+from chan.forms import newPost, newThread
+from chan.models import Post, Board, Thread
 # Create your views here.
 
-# def index(request):
-#     return render(request,'chan/index.html')
-
 def index(request):
+    return render(request,'chan/index.html')
 
-    return render(request,'chan/index.html',context=myDict)
+# def index(request):
+#     boards = Board.objects.all()
+#
+#
+#     myDict = {'board':boards}
+#     return render(request,'chan/index.html',context=myDict)
 
 def thread(request):
     makePost = newPost()
