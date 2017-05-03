@@ -7,6 +7,7 @@ from chan.models import Post
 #     return render(request,'chan/index.html')
 
 def index(request):
+
     return render(request,'chan/index.html',context=myDict)
 
 def thread(request):
