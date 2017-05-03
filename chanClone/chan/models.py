@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 class Board(models.Model):
-    board_name = thread_name = models.CharFile()
+    board_name = models.CharField(max_length=255)
 
 class Thread(models.Model):
     board = models.ForeignKey(Board)
-    thread_name = models.CharFile()
+    thread_name = models.CharField(max_length=255)
 
 class Post(models.Model):
     thread = models.ForeignKey(Thread)
