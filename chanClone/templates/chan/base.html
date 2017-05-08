@@ -6,13 +6,10 @@
   </head>
   <body>
     <nav>
-      {%if boards%}
-        {%for b in boards%}
-        <ul>
-          <li><a href="{{b.board_name}}">{{b.board_name}}</a></li>
-        </ul>
-        {%endfor%}
-      {%endif%}
+      <ul>
+        <li><a href="{%url 'chan:list'%}">Boards</a></li>
+        <li><a href="{%url 'admin:index'%}">Admin</a></li>
+      </ul>
     </nav>
     {% block body_block %}
     {# Anything outside of this will be inherited if you use extend.#}

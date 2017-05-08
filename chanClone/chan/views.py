@@ -6,3 +6,17 @@ from django.views.generic import View,TemplateView,ListView,DetailView
 
 # def index(request):
 #     return render(request,'chan/index.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+class BoardListView(ListView):
+    context_object_name = 'boards'
+    model = Board
+
+class ThreadListView(ListView):
+    context_object_name = 'threads'
+    model = Thread
+
+class PostListView(ListView):
+    context_object_name = 'posts'
+    model = Post
