@@ -6,10 +6,10 @@
   </head>
   <body>
     <nav>
-      {%if board%}
-        {%for b in board%}
+      {%if boards%}
+        {%for b in boards%}
         <ul>
-          <a href="{{b.board_name}}"></a>
+          <li><a href="{{b.board_name}}">{{b.board_name}}</a></li>
         </ul>
         {%endfor%}
       {%endif%}
