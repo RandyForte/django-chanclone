@@ -1,0 +1,10 @@
+{%extends 'chan_app/base.html'%}
+{%block bodyblock%}
+  <h1>Board Detail</h1>
+  <h2>Board Details:</h2>
+  <p>Board Name: {{board_detail.board_name}}</p>
+  <h1>Threads</h1>
+  {%for thread in board_detail.threads.all%}
+    <p><a href="{{thread.id}}">{{thread.thread_name}}</a></p>
+  {%endfor%}
+{%endblock%}

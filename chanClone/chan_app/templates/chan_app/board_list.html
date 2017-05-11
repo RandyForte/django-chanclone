@@ -1,0 +1,10 @@
+{%extends "chan_app/base.html"%}
+
+{%block bodyblock%}
+  <h1>List of all Boards</h1>
+  <ol>
+    {%for board in boards%}
+    <h2><li><a href="{{board.id}}">{{board.board_name}}</a></li></h2>
+    {%endfor%}
+  </ol>
+{%endblock%}

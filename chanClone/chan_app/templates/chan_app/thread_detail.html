@@ -1,0 +1,9 @@
+{%extends 'chan_app/base.html'%}
+{%block bodyblock%}
+  <h1>Thread Details</h1>
+  <h1>Thread Name: {{thread_detail.thread_name}}</h1>
+  <h1>Posts</h1>
+  {%for post in thread_detail.posts.all%}
+    <p>{{post.post_text}}</p>
+  {%endfor%}
+{%endblock%}
