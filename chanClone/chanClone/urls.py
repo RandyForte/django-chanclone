@@ -15,12 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from chan import views
-from django.conf import settings
-from django.conf.urls.static import static
-
+from chan_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.IndexView.as_view()),
-    url(r'^chan/',include('chan.urls',namespace='chan')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^chan_app/',include('chan_app.urls',namespace='chan_app'))
+]
