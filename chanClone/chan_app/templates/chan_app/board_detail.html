@@ -1,8 +1,9 @@
 {%extends 'chan_app/base.html'%}
 {%block bodyblock%}
-  <h1>Board Detail</h1>
-  <h2>Board Details:</h2>
+  <h1>Board Details:</h1>
   <p>Board Name: {{board_detail.board_name}}</p>
+  <p>Thread Count: </p>
+  <p>Post Count: </p>
   <h1>Threads</h1>
   {%for thread in board_detail.threads.all%}
     <p><a href="{{thread.id}}">{{thread.thread_name}}</a></p>

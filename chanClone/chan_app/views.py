@@ -5,7 +5,7 @@ from django.views.generic import (View, TemplateView, ListView, DetailView,
 from . import models
 
 class IndexView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'chan_app/index.html'
 
 class BoardListView(ListView):
     context_object_name = 'boards'
