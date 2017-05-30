@@ -4,6 +4,7 @@
   <p>Board Name: {{board_detail.board_name}}</p>
   <p>Thread Count: </p>
   <p>Post Count: </p>
+  <p><a href="{%url 'chan_app:createthread' 'create'%}">Create Thread</a></p>
   <h1>Threads</h1>
   {%for thread in board_detail.threads.all%}
     <p><a href="{{thread.id}}">{{thread.thread_name}}</a></p>

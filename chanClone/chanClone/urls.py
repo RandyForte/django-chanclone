@@ -18,5 +18,5 @@ from django.contrib import admin
 from chan_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('chan_app.urls',namespace='leddit')),
+    url(r'^',include('chan_app.urls',namespace='chan_app')),
 ]
