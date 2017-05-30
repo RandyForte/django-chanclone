@@ -25,3 +25,7 @@ class ThreadCreateView(CreateView):
     fields = ('board','thread_name')
     #fields = ('thread_name',)##TODO
     model = models.Thread
+class PostCreateView(CreateView):
+    fields = ('thread','post_text','pic')
+    #fields = ('thread_name',)##TODO
+    model = models.Post

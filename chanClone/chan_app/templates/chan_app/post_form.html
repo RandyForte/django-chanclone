@@ -1,0 +1,13 @@
+{%extends 'chan_app/base.html'%}
+
+{%block bodyblock%}
+  <h1>
+    Create Post
+  </h1>
+
+  <form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" name="" value="Submit">
+  </form>
+{%endblock%}
