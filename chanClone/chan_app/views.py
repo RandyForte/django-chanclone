@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import (View, TemplateView, ListView, DetailView,
                                     CreateView,UpdateView,DeleteView)
 # from django.http import HttpResponse
@@ -22,9 +22,9 @@ class ThreadDetailView(DetailView):
     template_name = 'chan_app/thread_detail.html'
 
 class ThreadCreateView(CreateView):
-    fields = ('board','thread_name')
-    #fields = ('thread_name',)##TODO
+    fields = ('board','thread_name')#TODO remove if works
     model = models.Thread
+
 class PostCreateView(CreateView):
     fields = ('thread','post_text','pic')
     #fields = ('thread_name',)##TODO
