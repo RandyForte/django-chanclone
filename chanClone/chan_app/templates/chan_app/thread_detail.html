@@ -2,7 +2,7 @@
 {%block bodyblock%}
   <h1>Thread Details: </h1>
   <p>Thread Name: {{thread_detail.thread_name}}</p>
-  <p>Post Count: </p>
+  <p>Post Count: {{post_count}}</p>
   <h1>Posts</h1>
   <h3><strong><a href="{%url 'chan_app:createpost' thread_detail.id 'newpost'%}">New Post</a></strong></h3>
   {%for post in thread_detail.posts.all%}

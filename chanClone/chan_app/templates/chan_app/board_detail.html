@@ -2,8 +2,7 @@
 {%block bodyblock%}
   <h1>Board Details:</h1>
   <p>Board Name: {{board_detail.board_name}}</p>
-  <p>Thread Count: </p>
-  <p>Post Count: </p>
+  <p>Thread Count: {{thread_count}}</p>
   {# <p><a href="{%url 'chan_app:createthread' board_detail.id %}">Create Thread</a></p>#}
   <p><a href="{%url 'chan_app:createthread' board_id=board_detail.id %}">Create Thread</a></p>
   <h1>Threads</h1>

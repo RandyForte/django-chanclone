@@ -24,4 +24,4 @@ class Post(models.Model):
     pic = models.ImageField(blank=True,null=True,upload_to='post_img')
 
     def get_absolute_url(self):
-        return reverse("chan_app:threaddetail",kwargs={'pk':self.thread.id,'board_id':self.pk})
+        return reverse("chan_app:threaddetail",kwargs={'pk':self.pk,'board_id':self.pk})
