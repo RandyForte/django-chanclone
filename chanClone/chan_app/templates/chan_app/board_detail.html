@@ -4,7 +4,13 @@
   <p>Board Name: {{board_detail.board_name}}</p>
   <p>Thread Count: {{thread_count}}</p>
   {# <p><a href="{%url 'chan_app:createthread' board_detail.id %}">Create Thread</a></p>#}
-  <p><a href="{%url 'chan_app:createthread' board_id=board_detail.id %}">Create Thread</a></p>
+  <form action="{% url 'chan_app:boarddetail' board_detail.slug %}" method="POST">
+    {% csrf_token %}
+    <input name="thread_name" type="text">
+    <input name="thread_text" type="text">
+    <input type="submit" value="Create Thread">
+  </form>
+
   <h1>Threads</h1>
   {%for thread in board_detail.threads.all%}
     <p><a href="{{thread.id}}">{{thread.thread_name}}</a></p>

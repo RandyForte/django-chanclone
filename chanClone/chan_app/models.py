@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 class Board(models.Model):
     board_name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=3)
 
     def __str__(self):
         return self.board_name
@@ -11,6 +12,7 @@ class Board(models.Model):
 class Thread(models.Model):
     board = models.ForeignKey(Board,on_delete=models.CASCADE,related_name='threads')
     thread_name = models.CharField(max_length=255)
+    thread_text = models.CharField(max_length=255,null=True)
 
     def __str__(self):
         return self.thread_name
