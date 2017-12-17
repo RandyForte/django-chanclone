@@ -17,6 +17,8 @@ class BoardDetailView(DetailView):
     def get_context_data(self,**kwargs):
         data = super().get_context_data(**kwargs)
         threads = models.Thread.objects.all()
+        boards = models.Board.objects.all()
+        data['boards'] = boards
         threadCount = 0
         for thread in threads:
             if str(thread.board.slug) == self.kwargs['slug']:
@@ -26,7 +28,6 @@ class BoardDetailView(DetailView):
 
     def post(self, request, slug):
         b = models.Board.objects.get(slug=slug)
-        print(str(request))
         newthread = models.Thread.objects.create(
         thread_name=request.POST.get("thread_name"),
         board=b,
@@ -40,12 +41,21 @@ class ThreadDetailView(DetailView):
     def get_context_data(self,**kwargs):
         data = super().get_context_data(**kwargs)
         posts = models.Post.objects.all()
+        boards = models.Board.objects.all()
+        data['boards'] = boards
         postCount = 0
         for post in posts:
             if str(post.thread.id) == self.kwargs['pk']:
                 postCount= postCount + 1
         data['post_count'] = postCount
         return data
+    # def post(self, request, slug):
+    #     b = models.Board.objects.get(slug=slug)
+    #     newthread = models.Thread.objects.create(
+    #     thread_name=request.POST.get("thread_name"),
+    #     board=b,
+    #     thread_text=request.POST.get("thread_text"))
+    #     return redirect(reverse('chan_app:boarddetail', kwargs={'slug':slug}))
 
 class PostCreateView(CreateView):
     fields = ('thread','post_text','pic')
