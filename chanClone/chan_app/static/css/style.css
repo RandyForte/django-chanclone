@@ -1,0 +1,10 @@
+.ThreadContainer{
+background: gainsboro;
+    
+}
+.ThreadContainer>img{
+    width: 120px;
+    height: 80px;
+}
+.ThreadContainer>p{
+}
