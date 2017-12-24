@@ -1,10 +1,11 @@
 {%extends "chan_app/base.html"%}
 
 {%block bodyblock%}
-  <h1>List of all Boards</h1>
-  <ol>
+  <h1>Welcome to RufusChan</h1>
+  <h2>Pick your poison</h2>
+  <ul>
     {%for board in boards%}
-    <h2><li>{{board.slug}}-<a href="{{ board.slug }}">{{board.board_name}}</a></li></h2>
+    <h3><li>{{board.slug}} - <a href="{{ board.slug }}">{{board.board_name}}</a></li></h3>
     {%endfor%}
-  </ol>
+  </ul>
 {%endblock%}

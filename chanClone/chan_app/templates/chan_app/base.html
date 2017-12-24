@@ -11,7 +11,7 @@
         <li><a href="{%url 'chan_app:index'%}">Home</a></li>
         <li><a href="{%url 'admin:index'%}">Admin</a></li>
         {%for board in boards%}
-        <li><a href="{{board.slug}}">/{{board.slug}}/</a></li>
+        <li><a href="{%url 'chan_app:boarddetail' slug=board.slug%}">/{{board.slug}}/</a></li>
         {%endfor%}
       </ul>
     </nav>

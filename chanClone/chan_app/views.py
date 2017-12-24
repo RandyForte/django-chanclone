@@ -4,6 +4,7 @@ from django.views.generic import (View, TemplateView, ListView, DetailView,
 # from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.core.files.uploadedfile import SimpleUploadedFile
 from . import models
 
 class BoardListView(ListView):
@@ -31,6 +32,7 @@ class BoardDetailView(DetailView):
         newthread = models.Thread.objects.create(
         thread_name=request.POST.get("thread_name"),
         board=b,
+        thread_image=request.FILES.get("thread_image"),
         thread_text=request.POST.get("thread_text"))
         return redirect(reverse('chan_app:boarddetail', kwargs={'slug':slug}))
 
@@ -49,13 +51,13 @@ class ThreadDetailView(DetailView):
                 postCount= postCount + 1
         data['post_count'] = postCount
         return data
-    # def post(self, request, slug):
-    #     b = models.Board.objects.get(slug=slug)
-    #     newthread = models.Thread.objects.create(
-    #     thread_name=request.POST.get("thread_name"),
-    #     board=b,
-    #     thread_text=request.POST.get("thread_text"))
-    #     return redirect(reverse('chan_app:boarddetail', kwargs={'slug':slug}))
+    def post(self, request, slug, pk):
+        t = models.Thread.objects.get(id=pk)
+        newpost = models.Post.objects.create(
+        post_text=request.POST.get("post_text"),
+        post_image=request.FILES.get("post_image"),
+        thread=t)
+        return redirect(reverse('chan_app:threaddetail', kwargs={'slug':slug,'pk':pk}))
 
 class PostCreateView(CreateView):
     fields = ('thread','post_text','pic')
