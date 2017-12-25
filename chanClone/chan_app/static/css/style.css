@@ -1,10 +1,30 @@
 .ThreadContainer{
-background: gainsboro;
-    
+  background: gainsboro;
 }
 .ThreadContainer>img{
     width: 120px;
     height: 80px;
 }
 .ThreadContainer>p{
+}
+
+.PostContainer{
+  background: gainsboro;
+  margin-left: 10px;
+  min-width: 200px;
+  max-width: 700px;
+  width: auto;
+  height: auto;
+  min-height: 50px;
+  max-height: 500px;
+
+}
+
+.PostContainer>img{
+  width: 120px;
+  height: 80px;
+}
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
 }

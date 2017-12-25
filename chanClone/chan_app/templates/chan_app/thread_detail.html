@@ -1,21 +1,27 @@
 {%extends 'chan_app/base.html'%}
 {%block bodyblock%}
   <h1>{{thread_detail.thread_name}}</h1>
-  <p>Thread Post Count: {{post_count}}</p>
+  <p>Thread Post Count: <strong>{{post_count}}</strong></p>
   <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>Post Text</p>
-    <input name="post_text" type="text" required>
-    <p>Post Image(Optional)</a>
-    <input name="post_image" type="file" required>
-    <input type="submit" value="New Post">
+    <div class="form-group">
+      <label>Post Text</label>
+      <input name="post_text" type="text" required>
+      <br />
+      <label>Post Image(Optional)</label>
+      <input name="post_image" type="file">
+      <br />
+      <input type="submit" value="New Post" class ="btn btn-success">
+    </div>
   </form>
   <h3>Posts</h3>
   {# <h3><strong><a href="{%url 'chan_app:createpost' thread_detail.id 'newpost'%}">New Post</a></strong></h3> #}
   {%for post in thread_detail.posts.all%}
-    {% if post.post_image %}
-      <img src="{{post.post_image.url}}" alt="{{post.post_image}}">
-    {% endif %}
-    <p>{{post.post_text}}</p>
+    <div class="PostContainer">
+      {% if post.post_image %}
+        <img src="{{post.post_image.url}}" alt="{{post.post_image}}">
+      {% endif %}
+      <p>{{post.post_text}}</p>
+    </div>
   {%endfor%}
 {%endblock%}

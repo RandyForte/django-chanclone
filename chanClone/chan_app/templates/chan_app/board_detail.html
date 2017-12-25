@@ -1,28 +1,51 @@
 {%extends 'chan_app/base.html'%}
 {%block bodyblock%}
   <h1>{{board_detail.board_name}}</h1>
-  <p>Thread Count: {{thread_count}}</p>
-  {# <p><a href="{%url 'chan_app:createthread' board_detail.id %}">Create Thread</a></p>#}
-  <form action="{% url 'chan_app:boarddetail' board_detail.slug %}" method="POST" enctype="multipart/form-data">
+  <p>Board Thread Count: <strong>{{thread_count}}</strong></p>
+  <br />
+  <form action="{% url 'chan_app:boarddetail' board_detail.slug %}"
+  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>Thread Title</p>
-    <input name="thread_name" type="text">
-    <br>
-    <p>Thread Text</p>
-    <input name="thread_text" type="text">
-    <p>Thread Image</a>
-    <input name="thread_image" type="file" required>
-    <input type="submit" value="Create Thread">
+    <div class="form-group">
+
+      <label>Thread Title</label>
+      <input name="thread_name" type="text">
+      <br>
+      <label>Thread Text</label>
+      <textarea name="thread_text" style="width:280px;height:120px;"></textarea>
+      <br>
+      <label>Thread Image</label>
+      <input name="thread_image" type="file" required>
+      <br/>
+      <input type="submit" value="Create Thread" class ="btn btn-success">
+
+    </div>
   </form>
 
-  <h3>Threads</h3>
-  {%for thread in board_detail.threads.all%}
-    <div class="ThreadContainer">
-      <h3><a href="{{thread.id}}">{{thread.thread_name}}</a></h3>
-      {% if thread.thread_image %}
-        <img src="{{thread.thread_image.url}}" alt="{{thread.thread_image}}">
-      {% endif %}
-      <p>{{thread.thread_text}}</p>
+
+<h3>Threads</h3>
+
+  <div class="card-group" style="min-width: 40rem;">
+    <div class="flex-container">
+    {%for thread in board_detail.threads.all%}
+      <div class="card">
+        {% if thread.thread_image %}
+          <img class="card-img-top" src="{{thread.thread_image.url}}"
+          alt="{{thread.thread_image.url}}" style="width:auto;height:180px;"/>
+        {% endif %}
+        <div class="card-body">
+          <h4 class="card-title">{{thread.thread_name}}</h4>
+          <p class="card-text">{{thread.thread_text}}</p>
+          <div class="card-footer">
+            <form action="{{thread.id}}">
+              <input class="btn btn-primary" type="submit" value="Read Thread"/>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    {%endfor%}
     </div>
-  {%endfor%}
+  </div>
+
 {%endblock%}
