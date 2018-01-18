@@ -17,10 +17,10 @@
   height: auto;
   min-height: 50px;
   max-height: 500px;
-
+  
 }
 
-.PostContainer>img{
+.PostContainer>p{
   width: 120px;
   height: 80px;
 }
