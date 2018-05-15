@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (View, TemplateView, ListView, DetailView,
                                     CreateView,UpdateView,DeleteView)
 # from django.http import HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.http import HttpResponse
 from django.core.files.uploadedfile import SimpleUploadedFile
 from . import models
