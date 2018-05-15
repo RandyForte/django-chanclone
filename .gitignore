@@ -1,1 +1,4 @@
 *.pyc
+media/thread_images/*
+media/post_images/*
+db.sqlite3
